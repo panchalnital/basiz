@@ -29,7 +29,7 @@ assignments/
 
 # Main Screen
 
-![Alt text](projectsimage/mainscreen.PNG?raw=true "Main screen")
+![Alt text](projectsimage/mainscreen.png?raw=true "Main screen")
 
 
 projectsimage/mainscreen.png
