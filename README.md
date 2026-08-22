@@ -8,7 +8,6 @@
 assignments/
 ├── index.php                     # Menu linking all tasks
 ├── task1_student/                # Student CRUD (HTML/JS/PHP/MySQL + AJAX)
-│   ├── schema.sql
 │   ├── db.php
 │   ├── index.php                 # Form + list (AJAX add & fetch)
 │   ├── add_student.php           # AJAX insert handler (server-side validation)
@@ -22,7 +21,9 @@ assignments/
 ├── task5_html_replace/
 │   └── index.php                 # HTML find & replace with dynamic pairs
 └── task6_triplet_sum/
-    └── index.php                 # Triplet-sum finder (two-pointer, O(n^2))
+|    └── index.php                 # Triplet-sum finder (two-pointer, O(n^2))
+├── index.php
+├── schema.sql
 ```
 
 ## Notes on each task
