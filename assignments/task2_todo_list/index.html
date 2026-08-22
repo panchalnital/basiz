@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task 2 - Todo List</title>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/basiz/index.php">&larr; Back to assignments</a>
+  <div class="card">
+    <h1>Todo List</h1>
+    <div class="add-row">
+      <input type="text" id="newTodo" placeholder="Add a new task...">
+      <button onclick="addTodo()">Add</button>
+    </div>
+    <ul id="todoList"></ul>
+  </div>
+</div>
+
+<script>
+// All todo data lives in this in-memory array only (no database, no localStorage)
+let todos = [];
+let nextId = 1;
+
+function addTodo() {
+  const input = document.getElementById('newTodo');
+  const text = input.value.trim();
+  if (!text) return;
+  todos.push({ id: nextId++, text: text, completed: false, editing: false });
+  input.value = '';
+  render();
+}
+
+function deleteTodo(id) {
+  todos = todos.filter(t => t.id !== id);
+  render();
+}
+
+function toggleComplete(id) {
+  const todo = todos.find(t => t.id === id);
+  if (todo) todo.completed = !todo.completed;
+  render();
+}
+
+function startEdit(id) {
+  todos.forEach(t => t.editing = (t.id === id));
+  render();
+}
+
+function saveEdit(id) {
+  const input = document.getElementById('edit-' + id);
+  const value = input.value.trim();
+  const todo = todos.find(t => t.id === id);
+  if (todo && value) {
+    todo.text = value;
+    todo.editing = false;
+  }
+  render();
+}
+
+function render() {
+  const list = document.getElementById('todoList');
+  if (todos.length === 0) {
+    list.innerHTML = '<li class="empty">No tasks yet. Add one above.</li>';
+    return;
+  }
+
+  list.innerHTML = todos.map(t => `
+    <li class="${t.completed ? 'completed' : ''}">
+      <div class="todo-text">
+        ${t.editing
+          ? `<input type="text" id="edit-${t.id}" value="${escapeHtml(t.text)}">`
+          : escapeHtml(t.text)}
+      </div>
+      <div class="actions">
+        ${t.editing
+          ? `<button class="btn-save" onclick="saveEdit(${t.id})">Save</button>`
+          : `<button class="btn-complete" onclick="toggleComplete(${t.id})">${t.completed ? 'Undo' : 'Complete'}</button>
+             <button class="btn-edit" onclick="startEdit(${t.id})">Edit</button>`}
+        <button class="btn-delete" onclick="deleteTodo(${t.id})">Delete</button>
+      </div>
+    </li>`).join('');
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+document.getElementById('newTodo').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') addTodo();
+});
+
+render();
+</script>
+</body>
+</html>
