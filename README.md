@@ -32,29 +32,29 @@ assignments/
 ![Alt text](projectsimage/mainscreen.PNG?raw=true "Main screen")
 
 
-
+projectsimage/mainscreen.png
 
 1. **Student Details** — client-side validation mirrors server-side validation in `add_student.php`. Age is auto-calculated in JS from DOB and re-verified/recalculated on the server. Mobile must be exactly 10 numeric digits. Adding a student uses `XMLHttpRequest` (AJAX) to POST to `add_student.php`, then the list reloads via AJAX from `get_students.php` — no page refresh.
 
-![Alt text](projectsimage/studentlist.PNG?raw=true "Main screen")
+![Alt text](projectsimage/studentlist.png?raw=true "Main screen")
 
 
 2. **Todo List** — all data (`todos` array) lives purely in JavaScript memory; add/edit/delete/complete all mutate that array, then re-render. Nothing is persisted (per the "no database" requirement — this also means no `localStorage`, since the task must not use any storage/database).
 
-![Alt text](projectsimage/todolist.PNG?raw=true "Main screen")
+![Alt text](projectsimage/todolist.png?raw=true "Main screen")
 
 3. **Placeholder Replace** — `str_replace()` with an array of `@Key@` search terms mapped to values; UI lets you edit the template and each value.
 
-![Alt text](projectsimage/stringreplace.PNG?raw=true "Main screen")
+![Alt text](projectsimage/stringreplace.png?raw=true "Main screen")
 
 4. **Days Between Dates** — uses PHP `DateTime::diff()` for the day count and a recursive `numberToWords()` function (handles thousands/millions) for the word form. UI accepts `dd/mm/yyyy` dates.
 
-![Alt text](projectsimage/datediff.PNG?raw=true "Main screen")
+![Alt text](projectsimage/datediff.png?raw=true "Main screen")
 
 5. **HTML Find & Replace** — dynamic list of find/replace pairs (add/remove rows) applied with `str_replace()` so only the text is swapped and surrounding HTML tags are untouched. Shows both the raw replaced HTML and a rendered preview.
 
-![Alt text](projectsimage/findreplace.PNG?raw=true "Main screen")
+![Alt text](projectsimage/findreplace.png?raw=true "Main screen")
 
 6. **Triplet Sum** — sorts a copy of the array, then uses the classic two-pointer technique per outer element for O(n²) time. Returns the triplet or `false`. UI accepts a comma-separated array and a target value.
 
-![Alt text](projectsimage/tripletsum.PNG?raw=true "Main screen")
+![Alt text](projectsimage/tripletsum.png?raw=true "Main screen")
